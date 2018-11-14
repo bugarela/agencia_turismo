@@ -13,3 +13,12 @@
     populacao: Faker::Number.number(6)
   )
 end
+
+100.times do
+  Cliente.create(
+    cpf: Faker::Number.number(11),
+    nome: Faker::Name.name,
+    email: Faker::Internet.email,
+    telefone: "9" + Faker::Number.number(8)
+  )
+end

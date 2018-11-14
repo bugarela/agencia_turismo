@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  valor: 
+  data_inicio: 2018-11-14
+  data_fim: 2018-11-14
+  cidade: one
+
+two:
+  valor: 
+  data_inicio: 2018-11-14
+  data_fim: 2018-11-14
+  cidade: two

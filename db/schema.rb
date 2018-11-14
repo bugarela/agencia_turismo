@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_193804) do
+ActiveRecord::Schema.define(version: 2018_11_14_194616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2018_11_14_193804) do
     t.index ["cpf"], name: "index_clientes_on_cpf", unique: true
   end
 
+  create_table "compras", force: :cascade do |t|
+    t.bigint "cliente_id"
+    t.bigint "pacote_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_compras_on_cliente_id"
+    t.index ["pacote_id"], name: "index_compras_on_pacote_id"
+  end
+
   create_table "pacotes", force: :cascade do |t|
     t.money "valor", scale: 2
     t.date "data_inicio"
@@ -43,5 +52,7 @@ ActiveRecord::Schema.define(version: 2018_11_14_193804) do
     t.index ["cidade_id"], name: "index_pacotes_on_cidade_id"
   end
 
+  add_foreign_key "compras", "clientes"
+  add_foreign_key "compras", "pacotes"
   add_foreign_key "pacotes", "cidades"
 end

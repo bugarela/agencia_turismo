@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :compras
   resources :clientes
   resources :cidades
   resources :pacotes

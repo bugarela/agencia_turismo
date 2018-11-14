@@ -1,0 +1,27 @@
+<%= form_with(model: compra, local: true) do |form| %>
+  <% if compra.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(compra.errors.count, "error") %> prohibited this compra from being saved:</h2>
+
+      <ul>
+      <% compra.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cpf_cliente %>
+    <%= form.text_field :cpf_cliente %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pacote_id %>
+    <%= form.text_field :pacote_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

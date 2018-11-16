@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  logradouro: MyString
+  numero: 1
+  cep: MyString
+
+two:
+  logradouro: MyString
+  numero: 1
+  cep: MyString

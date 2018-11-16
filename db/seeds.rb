@@ -39,6 +39,16 @@ end
 end
 
 10.times do
+  Pacote.create(
+    valor: Faker::Number.decimal(2),
+    data_inicio: Faker::Date.between(Date.today, 5.days.from_now),
+    data_fim: Faker::Date.between(25.days.from_now, 30.days.from_now),
+    cidade: Cidade.find(Faker::Number.between(1, 100))
+  )
+end
+
+
+10.times do
   Atracao.create(
     descricao:Faker::HitchhikersGuideToTheGalaxy.quote,
     endereco: Endereco.find(Faker::Number.between(1, 100)),
@@ -49,24 +59,28 @@ end
 end
 
 10.times do
-  Pacote.create(
-    valor: Faker::Number.decimal(2),
-    data_inicio: Faker::Date.between(Date.today, 5.days.from_now),
-    data_fim: Faker::Date.between(25.days.from_now, 30.days.from_now),
-    cidade: Cidade.find(Faker::Number.between(1, 100))
+  Atracao.create(
+    pacote: Pacote.find(Faker::Number.between(1, 10)),
+    descricao:Faker::HitchhikersGuideToTheGalaxy.quote,
+    endereco: Endereco.find(Faker::Number.between(1, 100)),
+    turistico_id: Faker::Number.between(1, 100),
+    turistico_type: 'Igreja',
+    dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
   )
 end
 
+
+#
+# # 10.times do
+# #   Oferecimento.create(
+# #     pacote: Pacote.find(Faker::Number.between(1, 10)),
+# #     atracao: Atracao.find(Faker::Number.between(1, 10))
+# #   )
+# # end
+#
 # 10.times do
-#   Oferecimento.create(
+#   Compra.create(
 #     pacote: Pacote.find(Faker::Number.between(1, 10)),
-#     atracao: Atracao.find(Faker::Number.between(1, 10))
+#     cliente: Cliente.find(Faker::Number.between(1, 100))
 #   )
 # end
-
-10.times do
-  Compra.create(
-    pacote: Pacote.find(Faker::Number.between(1, 10)),
-    cliente: Cliente.find(Faker::Number.between(1, 100))
-  )
-end

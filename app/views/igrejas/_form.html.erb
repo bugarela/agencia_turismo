@@ -1,0 +1,27 @@
+<%= form_with(model: igreja, local: true) do |form| %>
+  <% if igreja.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(igreja.errors.count, "error") %> prohibited this igreja from being saved:</h2>
+
+      <ul>
+      <% igreja.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :data_construcao %>
+    <%= form.date_select :data_construcao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estilo_construcao %>
+    <%= form.text_field :estilo_construcao %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

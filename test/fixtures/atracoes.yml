@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyText
+  endereco: one
+  dia_visita: 2018-11-16
+  turistico_id: 1
+  turistico_type: MyString
+
+two:
+  descricao: MyText
+  endereco: two
+  dia_visita: 2018-11-16
+  turistico_id: 1
+  turistico_type: MyString

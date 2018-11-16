@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data construcao:</strong>
+  <%= @igreja.data_construcao %>
+</p>
+
+<p>
+  <strong>Estilo construcao:</strong>
+  <%= @igreja.estilo_construcao %>
+</p>
+
+<%= link_to 'Edit', edit_igreja_path(@igreja) %> |
+<%= link_to 'Back', igrejas_path %>

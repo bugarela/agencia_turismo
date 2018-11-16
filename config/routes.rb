@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :oferecimentos
+  resources :igrejas
+  resources :atracoes
   resources :compras
   resources :clientes
   resources :cidades

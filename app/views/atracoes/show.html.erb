@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @atracao.descricao %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @atracao.endereco %>
+</p>
+
+<p>
+  <strong>Dia visita:</strong>
+  <%= @atracao.dia_visita %>
+</p>
+
+<p>
+  <strong>Turistico:</strong>
+  <%= @atracao.turistico_id %>
+</p>
+
+<p>
+  <strong>Turistico type:</strong>
+  <%= @atracao.turistico_type %>
+</p>
+
+<%= link_to 'Edit', edit_atracao_path(@atracao) %> |
+<%= link_to 'Back', atracoes_path %>

@@ -10,22 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_204637) do
+ActiveRecord::Schema.define(version: 2018_11_14_194616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "atracoes", force: :cascade do |t|
-    t.text "descricao"
-    t.bigint "endereco_id"
-    t.date "dia_visita"
-    t.integer "turistico_id"
-    t.string "turistico_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["endereco_id"], name: "index_atracoes_on_endereco_id"
-    t.index ["turistico_id", "turistico_type"], name: "index_atracoes_on_turistico_id_and_turistico_type"
-  end
 
   create_table "cidades", force: :cascade do |t|
     t.string "nome"
@@ -54,30 +42,6 @@ ActiveRecord::Schema.define(version: 2018_11_16_204637) do
     t.index ["pacote_id"], name: "index_compras_on_pacote_id"
   end
 
-  create_table "enderecos", force: :cascade do |t|
-    t.string "logradouro"
-    t.integer "numero"
-    t.string "cep"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "igrejas", force: :cascade do |t|
-    t.date "data_construcao"
-    t.string "estilo_construcao"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "oferecimentos", force: :cascade do |t|
-    t.bigint "pacote_id"
-    t.bigint "atracao_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["atracao_id"], name: "index_oferecimentos_on_atracao_id"
-    t.index ["pacote_id"], name: "index_oferecimentos_on_pacote_id"
-  end
-
   create_table "pacotes", force: :cascade do |t|
     t.money "valor", scale: 2
     t.date "data_inicio"
@@ -88,10 +52,7 @@ ActiveRecord::Schema.define(version: 2018_11_16_204637) do
     t.index ["cidade_id"], name: "index_pacotes_on_cidade_id"
   end
 
-  add_foreign_key "atracoes", "enderecos"
   add_foreign_key "compras", "clientes"
   add_foreign_key "compras", "pacotes"
-  add_foreign_key "oferecimentos", "atracoes"
-  add_foreign_key "oferecimentos", "pacotes"
   add_foreign_key "pacotes", "cidades"
 end

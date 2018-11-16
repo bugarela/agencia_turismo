@@ -1,0 +1,42 @@
+<%= form_with(model: atracao, local: true) do |form| %>
+  <% if atracao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(atracao.errors.count, "error") %> prohibited this atracao from being saved:</h2>
+
+      <ul>
+      <% atracao.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_area :descricao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :endereco_id %>
+    <%= form.text_field :endereco_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dia_visita %>
+    <%= form.date_select :dia_visita %>
+  </div>
+
+  <div class="field">
+    <%= form.label :turistico_id %>
+    <%= form.number_field :turistico_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :turistico_type %>
+    <%= form.text_field :turistico_type %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

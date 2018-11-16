@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data_construcao: 2018-11-16
+  estilo_construcao: MyString
+
+two:
+  data_construcao: 2018-11-16
+  estilo_construcao: MyString

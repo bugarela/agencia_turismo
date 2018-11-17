@@ -1,37 +1,103 @@
-<%= form_with(model: cliente, local: true) do |form| %>
-  <% if cliente.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-      <ul>
-      <% cliente.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<%= render 'header'%>
+
+<body class="">
+  <div class="wrapper">
+    <%= render 'sidebar'%>
+    <div class="main-panel">
+      <% if notice %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <i class="material-icons">close</i>
+        </button>
+        <span>
+          <b> Success - </b><%= notice %></span>
+      </div>
       <% end %>
-      </ul>
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Cadastro Cliente</h4>
+                  <p class="card-category">Insira os dados do cliente</p>
+                </div>
+                <div class="card-body">
+                  <%= form_with(model: cliente, local: true) do |form| %>
+                    <% if cliente.errors.any? %>
+                    <div class="alert alert-danger">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                      </button>
+                      <span>
+                        <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+
+                        <ul>
+                        <% cliente.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                    </div>
+                    <% end %>
+
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <%= form.label :cpf, class: "bmd-label-floating"%>
+                          <%= form.text_field :cpf, class: "form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="form-group">
+                          <%= form.label :nome, class: "bmd-label-floating"%>
+                          <%= form.text_field :nome, class: "form-control" %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <%= form.label :email, class: "bmd-label-floating"%>
+                          <%= form.email_field :email, class: "form-control" %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-7">
+                        <div class="form-group">
+                          <%= form.label :telefone, class: "bmd-label-floating"%>
+                          <%= form.telephone_field :telefone, class: "form-control" %>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                    <div class="clearfix"></div>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-category text-gray">Algo aqui</h6>
+                  <h4 class="card-title">Alec Thompson</h4>
+                  <p class="card-description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                  </p>
+                  <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= render 'footer'%>
+
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
   </div>
+</body>
 
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telefone %>
-    <%= form.text_field :telefone %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</html>

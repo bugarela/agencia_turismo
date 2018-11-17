@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'page/criar'
+  get 'page/index'
+  root to: 'page#index'
   resources :quartos
   resources :tipo_de_quartos
   resources :hoteis

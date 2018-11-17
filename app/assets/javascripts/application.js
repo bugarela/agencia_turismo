@@ -14,3 +14,18 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+//= require jquery
+//= require jquery_ujs
+//= require popper
+//= require material/bootstrap-material-design.min
+//= require material/jquery.min
+//= require material/popper.min
+
+//= require plugins/jquery.validate.min
+//= require plugins/jquery.dataTables.min
+//= require plugins/perfect-scrollbar.jquery.min
+//= require plugins/chartist.min
+//= require plugins/arrive.min
+//= require plugins/bootstrap-notify
+//= require plugins/sweetalert2

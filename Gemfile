@@ -25,6 +25,11 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'immigrant'
 gem 'hairtrigger'
 
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+gem "jquery-rails"
+gem 'popper_js', '~> 1.12.9'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

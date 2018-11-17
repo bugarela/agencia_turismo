@@ -75,3 +75,22 @@ end
     cliente: Cliente.find(Faker::Number.between(1, 100))
   )
 end
+
+100.times do
+  Hotel.create(
+    nome: Faker::TvShows::Friends.location,
+    categoria: Faker::Number.between(3, 5).to_s + " stars",
+    cidade: Cidade.find(Faker::Number.between(1, 100)),
+    endereco: Endereco.find(Faker::Number.between(1, 100))
+  )
+end
+
+100.times do
+  Restaurante.create(
+    nome: Faker::Food.dish,
+    categoria: Faker::Nation.nationality,
+    cidade: Cidade.find(Faker::Number.between(1, 100)),
+    endereco: Endereco.find(Faker::Number.between(1, 100)),
+    hotel: Hotel.find(Faker::Number.between(1, 100))
+  )
+end

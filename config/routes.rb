@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :hoteis
+  resources :restaurantes
   resources :igrejas
   resources :atracoes
   resources :compras

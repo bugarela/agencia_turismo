@@ -1,0 +1,42 @@
+<%= form_with(model: restaurante, local: true) do |form| %>
+  <% if restaurante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(restaurante.errors.count, "error") %> prohibited this restaurante from being saved:</h2>
+
+      <ul>
+      <% restaurante.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :categoria %>
+    <%= form.text_field :categoria %>
+  </div>
+
+  <div class="field">
+    <%= form.label :endereco_id %>
+    <%= form.text_field :endereco_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cidade_id %>
+    <%= form.text_field :cidade_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hotel_id %>
+    <%= form.text_field :hotel_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

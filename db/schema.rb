@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_201044) do
+ActiveRecord::Schema.define(version: 2018_11_17_005711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,17 @@ ActiveRecord::Schema.define(version: 2018_11_16_201044) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hoteis", force: :cascade do |t|
+    t.string "nome"
+    t.string "categoria"
+    t.bigint "endereco_id"
+    t.bigint "cidade_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cidade_id"], name: "index_hoteis_on_cidade_id"
+    t.index ["endereco_id"], name: "index_hoteis_on_endereco_id"
+  end
+
   create_table "igrejas", force: :cascade do |t|
     t.date "data_construcao"
     t.string "estilo_construcao"
@@ -81,9 +92,27 @@ ActiveRecord::Schema.define(version: 2018_11_16_201044) do
     t.index ["cidade_id"], name: "index_pacotes_on_cidade_id"
   end
 
+  create_table "restaurantes", force: :cascade do |t|
+    t.string "nome"
+    t.string "categoria"
+    t.bigint "endereco_id"
+    t.bigint "cidade_id"
+    t.bigint "hotel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cidade_id"], name: "index_restaurantes_on_cidade_id"
+    t.index ["endereco_id"], name: "index_restaurantes_on_endereco_id"
+    t.index ["hotel_id"], name: "index_restaurantes_on_hotel_id"
+  end
+
   add_foreign_key "atracoes", "enderecos"
   add_foreign_key "atracoes", "pacotes"
   add_foreign_key "compras", "clientes"
   add_foreign_key "compras", "pacotes"
+  add_foreign_key "hoteis", "cidades"
+  add_foreign_key "hoteis", "enderecos"
   add_foreign_key "pacotes", "cidades"
+  add_foreign_key "restaurantes", "cidades"
+  add_foreign_key "restaurantes", "enderecos"
+  add_foreign_key "restaurantes", "hoteis"
 end

@@ -88,7 +88,7 @@ end
 100.times do
   Restaurante.create(
     nome: Faker::Food.dish,
-    categoria: Faker::Nation.nationality,
+    categoria: Faker::Subscription.plan,
     cidade: Cidade.find(Faker::Number.between(1, 100)),
     endereco: Endereco.find(Faker::Number.between(1, 100)),
     hotel: Hotel.find(Faker::Number.between(1, 100))
@@ -100,5 +100,12 @@ end
     nome: Faker::Subscription.plan,
     valor_diaria: Faker::Number.decimal(2, 2),
     hotel: Hotel.find(Faker::Number.between(1, 100))
+  )
+end
+
+100.times do
+  Quarto.create(
+    numero: Faker::Number.between(1, 9).to_s + "0" + Faker::Number.between(1, 9).to_s,
+    tipo_de_quarto: TipoDeQuarto.find(Faker::Number.between(1, 100))
   )
 end

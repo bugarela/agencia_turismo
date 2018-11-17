@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_17_012243) do
+ActiveRecord::Schema.define(version: 2018_11_17_014059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,14 @@ ActiveRecord::Schema.define(version: 2018_11_17_012243) do
     t.index ["cidade_id"], name: "index_pacotes_on_cidade_id"
   end
 
+  create_table "quartos", force: :cascade do |t|
+    t.integer "numero"
+    t.bigint "tipo_de_quarto_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tipo_de_quarto_id"], name: "index_quartos_on_tipo_de_quarto_id"
+  end
+
   create_table "restaurantes", force: :cascade do |t|
     t.string "nome"
     t.string "categoria"
@@ -121,6 +129,7 @@ ActiveRecord::Schema.define(version: 2018_11_17_012243) do
   add_foreign_key "hoteis", "cidades"
   add_foreign_key "hoteis", "enderecos"
   add_foreign_key "pacotes", "cidades"
+  add_foreign_key "quartos", "tipo_de_quartos"
   add_foreign_key "restaurantes", "cidades"
   add_foreign_key "restaurantes", "enderecos"
   add_foreign_key "restaurantes", "hoteis"

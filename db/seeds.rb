@@ -69,18 +69,9 @@ end
   )
 end
 
-
-#
-# # 10.times do
-# #   Oferecimento.create(
-# #     pacote: Pacote.find(Faker::Number.between(1, 10)),
-# #     atracao: Atracao.find(Faker::Number.between(1, 10))
-# #   )
-# # end
-#
-# 10.times do
-#   Compra.create(
-#     pacote: Pacote.find(Faker::Number.between(1, 10)),
-#     cliente: Cliente.find(Faker::Number.between(1, 100))
-#   )
-# end
+10.times do
+  Compra.create(
+    pacote: Pacote.find(Faker::Number.between(1, 10)),
+    cliente: Cliente.find(Faker::Number.between(1, 100))
+  )
+end

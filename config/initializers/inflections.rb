@@ -17,4 +17,7 @@
 
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'atracao', 'atracoes'
+  inflect.irregular 'hotel', 'hoteis'
+  inflect.irregular 'fundacao', 'fundacoes'
+  inflect.irregular 'fundador', 'fundadores'
 end

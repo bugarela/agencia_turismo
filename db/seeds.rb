@@ -94,3 +94,11 @@ end
     hotel: Hotel.find(Faker::Number.between(1, 100))
   )
 end
+
+100.times do
+  TipoDeQuarto.create(
+    nome: Faker::Subscription.plan,
+    valor_diaria: Faker::Number.decimal(2, 2),
+    hotel: Hotel.find(Faker::Number.between(1, 100))
+  )
+end

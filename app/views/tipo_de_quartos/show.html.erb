@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @tipo_de_quarto.nome %>
+</p>
+
+<p>
+  <strong>Valor diaria:</strong>
+  <%= @tipo_de_quarto.valor_diaria %>
+</p>
+
+<p>
+  <strong>Hotel:</strong>
+  <%= @tipo_de_quarto.hotel %>
+</p>
+
+<%= link_to 'Edit', edit_tipo_de_quarto_path(@tipo_de_quarto) %> |
+<%= link_to 'Back', tipo_de_quartos_path %>

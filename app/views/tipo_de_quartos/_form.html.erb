@@ -1,0 +1,32 @@
+<%= form_with(model: tipo_de_quarto, local: true) do |form| %>
+  <% if tipo_de_quarto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tipo_de_quarto.errors.count, "error") %> prohibited this tipo_de_quarto from being saved:</h2>
+
+      <ul>
+      <% tipo_de_quarto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :valor_diaria %>
+    <%= form.text_field :valor_diaria %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hotel_id %>
+    <%= form.text_field :hotel_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tipo_de_quartos
   resources :hoteis
   resources :restaurantes
   resources :igrejas

@@ -47,26 +47,17 @@ end
   )
 end
 
-
-10.times do
-  Atracao.create(
-    descricao:Faker::HitchhikersGuideToTheGalaxy.quote,
-    endereco: Endereco.find(Faker::Number.between(1, 100)),
-    turistico_id: Igreja.find(Faker::Number.between(1, 100)),
-    turistico_type: 'Igreja',
-    dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
-  )
-end
-
-10.times do
-  Atracao.create(
-    pacote: Pacote.find(Faker::Number.between(1, 10)),
-    descricao:Faker::HitchhikersGuideToTheGalaxy.quote,
-    endereco: Endereco.find(Faker::Number.between(1, 100)),
-    turistico_id: Faker::Number.between(1, 100),
-    turistico_type: 'Igreja',
-    dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
-  )
+for i in 1..10
+  Faker::Number.between(1, 4).times do
+    Atracao.create(
+      pacote: Pacote.find(i),
+      descricao: Faker::TvShows::Friends.location,
+      endereco: Endereco.find(Faker::Number.between(1, 100)),
+      turistico_id: Faker::Number.between(1, 100),
+      turistico_type: 'Igreja',
+      dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
+    )
+  end
 end
 
 10.times do

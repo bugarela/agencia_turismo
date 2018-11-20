@@ -74,17 +74,8 @@
                     </div>
                     <div class="row">
                       <div class="col-md-7">
-                        <div class="form-group">
-                          <%= form.fields_for :compras do |compra_fields| %>
-                            <div>
-                            <%= compra_fields.check_box :_destroy,
-                                  {:checked => compra_fields.object.persisted?},
-                                  '0', '1'
-                            %>
-                            <%= compra_fields.label :_destroy, compra_fields.object.pacote.cidade.nome %>
-                            <%= compra_fields.hidden_field :pacote_id %>
-                            </div>
-                          <% end %>
+                        <div class="form-check">
+                          <%= form.collection_check_boxes(:pacote_ids, Pacote.all, :id, :description, {}, { :multiple => true,  :selected => cliente.compras.map(&:id), :class => "form-check-span" } )%>
                         </div>
                       </div>
                     </div>

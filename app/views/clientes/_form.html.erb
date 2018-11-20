@@ -72,6 +72,22 @@
                         </div>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col-md-7">
+                        <div class="form-group">
+                          <%= form.fields_for :compras do |compra_fields| %>
+                            <div>
+                            <%= compra_fields.check_box :_destroy,
+                                  {:checked => compra_fields.object.persisted?},
+                                  '0', '1'
+                            %>
+                            <%= compra_fields.label :_destroy, compra_fields.object.pacote.cidade.nome %>
+                            <%= compra_fields.hidden_field :pacote_id %>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
                     <button type="submit" class="btn btn-primary pull-right">Salvar</button>
                     <div class="clearfix"></div>
                     <% end %>

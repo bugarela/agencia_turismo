@@ -19,7 +19,7 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">Cadastro Cliente</h4>
@@ -43,78 +43,65 @@
                     <% end %>
 
                     <div class="row">
-                      <div class="col-md-5">
+                      <div class="col-md-2">
                         <div class="form-group">
                           <%= form.label :cpf, class: "bmd-label-floating"%>
                           <%= form.text_field :cpf, class: "form-control" %>
                         </div>
                       </div>
-                      <div class="col-md-7">
+                      <div class="col-md-3">
                         <div class="form-group">
                           <%= form.label :nome, class: "bmd-label-floating"%>
                           <%= form.text_field :nome, class: "form-control" %>
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
+                      <div class="col-md-4">
                         <div class="form-group">
                           <%= form.label :email, class: "bmd-label-floating"%>
                           <%= form.email_field :email, class: "form-control" %>
                         </div>
                       </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <%= form.label :telefone, class: "bmd-label-floating"%>
+                        <%= form.telephone_field :telefone, class: "form-control" %>
+                      </div>
                     </div>
+                  </div>
+
+                    <h3 class="card-text text-center">Selecione pacotes para comprar:</h3>
+                    <br>
+                    <div class="form-check">
                     <div class="row">
-                      <div class="col-md-7">
-                        <div class="form-group">
-                          <%= form.label :telefone, class: "bmd-label-floating"%>
-                          <%= form.telephone_field :telefone, class: "form-control" %>
+                      <%= form.collection_check_boxes(:pacote_ids, Pacote.all, :id, :description, {}, { :multiple => true,  :selected => cliente.compras.map(&:id), :class => "form-check-input" } ) do |checkbox| %>
+                        <div class="col-md-4">
+                        <%= checkbox.label class:"form-check-label h-100 w-100" do %>
+                        <div class="card w-100 h-100">
+                          <div class="card-header card-header-primary">
+                            <h4 class="card-title">
+                              <%= checkbox.check_box %>
+                              <span class="form-check-sign">
+                                  <span class="check" style="border: 1px solid rgba(0, 0, 0, 0)"></span>
+                              </span>
+                            </h4>
+                            <p class="card-category"><%= link_to checkbox.text[0].nome, checkbox.text[0] %></p>
+                          </div>
+                          <ul class="list-group list-group-flush">
+                          <% checkbox.text[1].each do |atracao| %>
+                            <li class="list-group-item"><b><%= atracao.turistico_type %>: </b><%= link_to atracao.descricao, atracao %></li>
+                          <% end %>
+                            <li class="list-group-item"><b>Período: </b><%= Pacote.find(checkbox.value).data_inicio %> até <%= Pacote.find(checkbox.value).data_fim %></</li>
+                            <li class="list-group-item"><b>Valor: </b>R$ <%= Pacote.find(checkbox.value).valor %></</li>
+                          </ul>
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="card-columns">
-                          <div class="form-check">
-                            <%= form.collection_check_boxes(:pacote_ids, Pacote.all, :id, :description, {}, { :multiple => true,  :selected => cliente.compras.map(&:id), :class => "form-check-input" } ) do |checkbox| %>
-                            <%= checkbox.label class:"form-check-label" do %>
-                            <div class="card">
-                              <div class="card-header card-header-primary">
-                                <h4 class="card-title">
-                                  <%= checkbox.check_box %>
-                                  <span class="form-check-sign">
-                                      <span class="check" style="border: 1px solid rgba(0, 0, 0, 0)"></span>
-                                  </span>
-                                </h4>
-                                <p class="card-category"><%= checkbox.text[0] %></p>
-                              </div>
-                              <ul class="list-group list-group-flush">
-                                <% checkbox.text[1].each do |atracao| %>
-                                  <li class="list-group-item"><%= atracao %></li>
-                                <% end %>
-                              </ul>
-                            </div>
-                            <% end %>
-                            <% end %>
-                          </div>
-                      </div>
+                      <% end %>
+                    <% end %>
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">Salvar</button>
                     <div class="clearfix"></div>
                     <% end %>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-category text-gray">Algo aqui</h6>
-                  <h4 class="card-title">Alec Thompson</h4>
-                  <p class="card-description">
-                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                  </p>
-                  <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
                 </div>
               </div>
             </div>

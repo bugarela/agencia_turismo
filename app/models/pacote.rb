@@ -6,7 +6,7 @@ class Pacote < ApplicationRecord
   has_many :igrejas, through: :atracoes, source: :turistico, source_type: :'Igreja'
 
   def description
-      descricao_atracoes = atracao_ids.map {|id| Atracao.find(id).descricao}.compact
-      return cidade.nome, descricao_atracoes
+      descricao_atracoes = atracao_ids.map {|id| Atracao.find(id)}.compact
+      return cidade, descricao_atracoes
   end
 end

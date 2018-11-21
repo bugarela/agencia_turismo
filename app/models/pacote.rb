@@ -7,6 +7,6 @@ class Pacote < ApplicationRecord
 
   def description
       descricao_atracoes = atracao_ids.map {|id| Atracao.find(id).descricao}.compact
-      cidade.nome + " whit visits to " + descricao_atracoes.join(' ')
+      return cidade.nome, descricao_atracoes
   end
 end

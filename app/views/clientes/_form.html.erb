@@ -73,10 +73,31 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-7">
-                        <div class="form-check">
-                          <%= form.collection_check_boxes(:pacote_ids, Pacote.all, :id, :description, {}, { :multiple => true,  :selected => cliente.compras.map(&:id), :class => "form-check-span" } )%>
-                        </div>
+                      <div class="col-md-12">
+                        <div class="card-columns">
+                          <div class="form-check">
+                            <%= form.collection_check_boxes(:pacote_ids, Pacote.all, :id, :description, {}, { :multiple => true,  :selected => cliente.compras.map(&:id), :class => "form-check-input" } ) do |checkbox| %>
+                            <%= checkbox.label class:"form-check-label" do %>
+                            <div class="card">
+                              <div class="card-header card-header-primary">
+                                <h4 class="card-title">
+                                  <%= checkbox.check_box %>
+                                  <span class="form-check-sign">
+                                      <span class="check" style="border: 1px solid rgba(0, 0, 0, 0)"></span>
+                                  </span>
+                                </h4>
+                                <p class="card-category"><%= checkbox.text[0] %></p>
+                              </div>
+                              <ul class="list-group list-group-flush">
+                                <% checkbox.text[1].each do |atracao| %>
+                                  <li class="list-group-item"><%= atracao %></li>
+                                <% end %>
+                              </ul>
+                            </div>
+                            <% end %>
+                            <% end %>
+                          </div>
+                      </div>
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">Salvar</button>

@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title"><%= @atracao.descricao %></h4>
+            <p class="card-category"><%= @atracao.endereco.logradouro %>, <%= @atracao.endereco.numero %></p>
+          </div>
+          <div class="card-body">
+            <p>
+              <strong>Dia visita:</strong>
+              <%= @atracao.dia_visita %>
+            </p>
 
-<p>
-  <strong>Descricao:</strong>
-  <%= @atracao.descricao %>
-</p>
+            <p>
+              <strong>Turistico:</strong>
+              <%= @atracao.turistico_id %>
+            </p>
 
-<p>
-  <strong>Endereco:</strong>
-  <%= @atracao.endereco %>
-</p>
+            <p>
+              <strong>Turistico type:</strong>
+              <%= @atracao.turistico_type %>
+            </p>
 
-<p>
-  <strong>Dia visita:</strong>
-  <%= @atracao.dia_visita %>
-</p>
-
-<p>
-  <strong>Turistico:</strong>
-  <%= @atracao.turistico_id %>
-</p>
-
-<p>
-  <strong>Turistico type:</strong>
-  <%= @atracao.turistico_type %>
-</p>
-
-<%= link_to 'Edit', edit_atracao_path(@atracao) %> |
-<%= link_to 'Back', atracoes_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

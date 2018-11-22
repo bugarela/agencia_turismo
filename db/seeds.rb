@@ -67,7 +67,7 @@ end
   )
 end
 
-100.times do
+500.times do
   Hotel.create(
     nome: Faker::TvShows::Friends.location,
     categoria: Faker::Number.between(3, 5).to_s + " stars",
@@ -76,7 +76,7 @@ end
   )
 end
 
-100.times do
+500.times do
   Restaurante.create(
     nome: Faker::Food.dish,
     categoria: Faker::Subscription.plan,

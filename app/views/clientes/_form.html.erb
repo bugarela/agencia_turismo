@@ -1,118 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Cadastro Cliente</h4>
+            <p class="card-category">Insira os dados do cliente</p>
+          </div>
+          <div class="card-body">
+            <%= form_with(model: cliente, local: true) do |form| %>
+              <% if cliente.errors.any? %>
+              <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <i class="material-icons">close</i>
+                </button>
+                <span>
+                  <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
 
-<%= render 'header'%>
+                  <ul>
+                  <% cliente.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+              </div>
+              <% end %>
 
-<body class="">
-  <div class="wrapper">
-    <%= render 'sidebar'%>
-    <div class="main-panel">
-      <% if notice %>
-      <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <i class="material-icons">close</i>
-        </button>
-        <span>
-          <b> Success - </b><%= notice %></span>
-      </div>
-      <% end %>
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">Cadastro Cliente</h4>
-                  <p class="card-category">Insira os dados do cliente</p>
-                </div>
-                <div class="card-body">
-                  <%= form_with(model: cliente, local: true) do |form| %>
-                    <% if cliente.errors.any? %>
-                    <div class="alert alert-danger">
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <i class="material-icons">close</i>
-                      </button>
-                      <span>
-                        <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
-
-                        <ul>
-                        <% cliente.errors.full_messages.each do |message| %>
-                          <li><%= message %></li>
-                        <% end %>
-                    </div>
-                    <% end %>
-
-                    <div class="row">
-                      <div class="col-md-2">
-                        <div class="form-group">
-                          <%= form.label :cpf, class: "bmd-label-floating"%>
-                          <%= form.text_field :cpf, class: "form-control" %>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <%= form.label :nome, class: "bmd-label-floating"%>
-                          <%= form.text_field :nome, class: "form-control" %>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <%= form.label :email, class: "bmd-label-floating"%>
-                          <%= form.email_field :email, class: "form-control" %>
-                        </div>
-                      </div>
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <%= form.label :telefone, class: "bmd-label-floating"%>
-                        <%= form.telephone_field :telefone, class: "form-control" %>
-                      </div>
-                    </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <%= form.label :cpf, class: "bmd-label-floating"%>
+                    <%= form.text_field :cpf, class: "form-control" %>
                   </div>
-
-                    <h3 class="card-text text-center">Selecione pacotes para comprar:</h3>
-                    <br>
-                    <div class="form-check">
-                    <div class="row">
-                      <%= form.collection_check_boxes(:pacote_ids, Pacote.all, :id, :description, {}, { :multiple => true,  :selected => cliente.compras.map(&:id), :class => "form-check-input" } ) do |checkbox| %>
-                        <div class="col-md-4">
-                        <%= checkbox.label class:"form-check-label h-100 w-100" do %>
-                        <div class="card w-100 h-100">
-                          <div class="card-header card-header-primary">
-                            <h4 class="card-title">
-                              <%= checkbox.check_box %>
-                              <span class="form-check-sign">
-                                  <span class="check" style="border: 1px solid rgba(0, 0, 0, 0)"></span>
-                              </span>
-                            </h4>
-                            <p class="card-category"><%= link_to checkbox.text[0].nome, checkbox.text[0] %></p>
-                          </div>
-                          <ul class="list-group list-group-flush">
-                          <% checkbox.text[1].each do |atracao| %>
-                            <li class="list-group-item"><b><%= atracao.turistico_type %>: </b><%= link_to atracao.descricao, atracao %></li>
-                          <% end %>
-                            <li class="list-group-item"><b>Período: </b><%= Pacote.find(checkbox.value).data_inicio %> até <%= Pacote.find(checkbox.value).data_fim %></</li>
-                            <li class="list-group-item"><b>Valor: </b>R$ <%= Pacote.find(checkbox.value).valor %></</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <% end %>
-                    <% end %>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
-                    <div class="clearfix"></div>
-                    <% end %>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <%= form.label :nome, class: "bmd-label-floating"%>
+                    <%= form.text_field :nome, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <%= form.label :email, class: "bmd-label-floating"%>
+                    <%= form.email_field :email, class: "form-control" %>
+                  </div>
+                </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <%= form.label :telefone, class: "bmd-label-floating"%>
+                  <%= form.telephone_field :telefone, class: "form-control" %>
                 </div>
               </div>
             </div>
+
+              <h3 class="card-text text-center">Selecione pacotes para comprar:</h3>
+              <br>
+              <div class="form-check">
+              <div class="row">
+                <%= form.collection_check_boxes(:pacote_ids, Pacote.all, :id, :description, {}, { :multiple => true,  :selected => cliente.compras.map(&:id), :class => "form-check-input" } ) do |checkbox| %>
+                  <div class="col-md-4">
+                  <%= checkbox.label class:"form-check-label h-100 w-100" do %>
+                  <div class="card w-100 h-100">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title">
+                        <%= checkbox.check_box %>
+                        <span class="form-check-sign">
+                            <span class="check" style="border: 1px solid rgba(0, 0, 0, 0)"></span>
+                        </span>
+                      </h4>
+                      <p class="card-category"><%= link_to checkbox.text[0].nome, checkbox.text[0] %></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                    <% checkbox.text[1].each do |atracao| %>
+                      <li class="list-group-item"><b><%= atracao.turistico_type %>: </b><%= link_to atracao.descricao, atracao %></li>
+                    <% end %>
+                      <li class="list-group-item"><b>Período: </b><%= Pacote.find(checkbox.value).data_inicio %> até <%= Pacote.find(checkbox.value).data_fim %></</li>
+                      <li class="list-group-item"><b>Valor: </b>R$ <%= Pacote.find(checkbox.value).valor %></</li>
+                    </ul>
+                  </div>
+                </div>
+                <% end %>
+              <% end %>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+              <div class="clearfix"></div>
+              <% end %>
           </div>
         </div>
       </div>
-
-      <%= render 'footer'%>
-
     </div>
   </div>
-</body>
-
-</html>
+</div>

@@ -69,6 +69,6 @@ class AtracoesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def atracao_params
-      params.require(:atracao).permit(:descricao, :endereco_id, :dia_visita, :turistico_id, :turistico_type)
+      params.require(:atracao).permit(:dia_visita, :turistico_id, :turistico_type)
     end
 end

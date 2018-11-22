@@ -54,11 +54,11 @@
                 </div>
               </div>
 
-              <h3 class="card-text text-center">Selecione atrações:</h3>
+              <h3 class="card-text text-center">Selecione igrejas:</h3>
               <br>
               <div class="form-check">
               <div class="row">
-                <%= form.collection_check_boxes(:atracao_ids, Atracao.all, :id, :descricao, {}, { :multiple => true,  :selected => pacote.atracoes.map(&:id), :class => "form-check-input" } ) do |checkbox| %>
+                <%= form.collection_check_boxes(:igreja_ids, Igreja.where(cidade_id: pacote.cidade_id).all, :id, :estilo_construcao, {}, { :multiple => true,  :selected => pacote.igrejas.map(&:id), :class => "form-check-input" } ) do |checkbox| %>
                   <div class="col-md-4">
                   <%= checkbox.label class:"form-check-label h-100 w-100" do %>
                   <div class="card w-100 h-100">
@@ -69,7 +69,7 @@
                             <span class="check" style="border: 1px solid rgba(0, 0, 0, 0)"></span>
                         </span>
                       </h4>
-                      <p class="card-category"><%= link_to checkbox.text, Atracao.find(checkbox.value) %></p>
+                      <p class="card-category"><%= link_to checkbox.text, Igreja.find(checkbox.value) %></p>
                     </div>
                   </div>
                 </div>

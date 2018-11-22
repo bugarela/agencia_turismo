@@ -31,10 +31,13 @@ end
   )
 end
 
-100.times do
+1000.times do
   Igreja.create(
     data_construcao: Faker::Date.birthday(100, 500),
     estilo_construcao: Faker::HitchhikersGuideToTheGalaxy.starship,
+    descricao: Faker::TvShows::Friends.location,
+    endereco: Endereco.find(Faker::Number.between(1, 100)),
+    cidade: Cidade.find(Faker::Number.between(1, 100))
   )
 end
 
@@ -51,8 +54,6 @@ for i in 1..10
   Faker::Number.between(1, 4).times do
     Atracao.create(
       pacote: Pacote.find(i),
-      descricao: Faker::TvShows::Friends.location,
-      endereco: Endereco.find(Faker::Number.between(1, 100)),
       turistico_id: Faker::Number.between(1, 100),
       turistico_type: 'Igreja',
       dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)

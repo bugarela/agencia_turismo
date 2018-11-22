@@ -69,6 +69,6 @@ class IgrejasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def igreja_params
-      params.require(:igreja).permit(:data_construcao, :estilo_construcao)
+      params.require(:igreja).permit(:descricao, :endereco_id, :cidade_id, :data_construcao, :estilo_construcao)
     end
 end

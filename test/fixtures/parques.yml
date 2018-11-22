@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyText
+  endereco: one
+  cidade: one
+
+two:
+  descricao: MyText
+  endereco: two
+  cidade: two

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :parques
   root to: 'clientes#index'
   resources :quartos
   resources :tipo_de_quartos

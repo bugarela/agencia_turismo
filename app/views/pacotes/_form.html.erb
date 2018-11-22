@@ -53,15 +53,53 @@
                   </div>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="text-center">
+                    <br>
+                    <button type="submit" class="btn btn-primary pull-right">Salvar e carregar atrações</button>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
 
               <h3 class="card-text text-center">Selecione igrejas:</h3>
               <br>
               <div class="form-check">
+                <div class="row">
+                  <%= form.collection_check_boxes(:igreja_ids, Igreja.where(cidade: pacote.cidade_id).all, :id, :descricao, {}, { :multiple => true,  :selected => pacote.igrejas.map(&:id), :class => "form-check-input" } ) do |checkbox| %>
+                    <div class="col-md-4">
+                    <%= checkbox.label class:"form-check-label w-100" do %>
+                    <div class="card w-100 h-100">
+                      <div class="card-header card-header-primary">
+                        <h4 class="card-title">
+                          <%= checkbox.check_box %>
+                          <span class="form-check-sign">
+                              <span class="check" style="border: 1px solid rgba(0, 0, 0, 0)"></span>
+                          </span>
+                        </h4>
+                        <p class="card-category"><%= checkbox.text %></p>
+                      </div>
+                      <div class="card-body">
+                        <p><b>Endereço: </b><%= Igreja.find(checkbox.value).endereco.logradouro %>, <%= Igreja.find(checkbox.value).endereco.numero %></p>
+                        <p><b>Estilo da Construção: </b><%= Igreja.find(checkbox.value).estilo_construcao %></p>
+                        <p><b>Construída em: </b><%= Igreja.find(checkbox.value).data_construcao %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
+                <% end %>
+                </div>
+              </div>
+
+            <h3 class="card-text text-center">Selecione parques:</h3>
+            <br>
+            <div class="form-check">
               <div class="row">
-                <%= form.collection_check_boxes(:igreja_ids, Igreja.where(cidade_id: pacote.cidade_id).all, :id, :estilo_construcao, {}, { :multiple => true,  :selected => pacote.igrejas.map(&:id), :class => "form-check-input" } ) do |checkbox| %>
+                <%= form.collection_check_boxes(:parque_ids, Parque.where(cidade: pacote.cidade_id).all, :id, :descricao, {}, { :multiple => true,  :selected => pacote.parques.map(&:id), :class => "form-check-input" } ) do |checkbox| %>
                   <div class="col-md-4">
                   <%= checkbox.label class:"form-check-label h-100 w-100" do %>
-                  <div class="card w-100 h-100">
+                  <div class="card w-100">
                     <div class="card-header card-header-primary">
                       <h4 class="card-title">
                         <%= checkbox.check_box %>
@@ -69,21 +107,26 @@
                             <span class="check" style="border: 1px solid rgba(0, 0, 0, 0)"></span>
                         </span>
                       </h4>
-                      <p class="card-category"><%= link_to checkbox.text, Igreja.find(checkbox.value) %></p>
+                      <p class="card-category"><%= checkbox.text %></p>
+                    </div>
+                    <div class="card-body">
+                      <p><b>Endereço: </b><%= Parque.find(checkbox.value).endereco.logradouro %>, <%= Parque.find(checkbox.value).endereco.numero %></p>
                     </div>
                   </div>
                 </div>
                 <% end %>
               <% end %>
               </div>
-              <div class="row">
-                <div class="col-md-1">
-                  <button type="submit" class="btn btn-primary pull-right">Salvar</button>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-              <% end %>
             </div>
+            <div class="row">
+              <div class="col-md-1">
+                <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ class PacotesController < ApplicationController
 
     respond_to do |format|
       if @pacote.save
-        format.html { redirect_to @pacote, notice: 'Pacote was successfully created.' }
+        format.html { redirect_to edit_pacote_path(@pacote), notice: 'Pacote was successfully created.' }
         format.json { render :show, status: :created, location: @pacote }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PacotesController < ApplicationController
   def update
     respond_to do |format|
       if @pacote.update(pacote_params)
-        format.html { redirect_to @pacote, notice: 'Pacote was successfully updated.' }
+        format.html { redirect_to edit_pacote_path(@pacote), notice: 'Pacote was successfully updated.' }
         format.json { render :show, status: :ok, location: @pacote }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class PacotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pacote_params
-      params.require(:pacote).permit(:valor, :data_inicio, :data_fim, :cidade_id, igreja_ids:[])
+      params.require(:pacote).permit(:valor, :data_inicio, :data_fim, :cidade_id, igreja_ids:[], parque_ids:[])
     end
 end

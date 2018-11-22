@@ -41,6 +41,14 @@ end
   )
 end
 
+1000.times do
+  Parque.create(
+    descricao: Faker::TvShows::Friends.location,
+    endereco: Endereco.find(Faker::Number.between(1, 100)),
+    cidade: Cidade.find(Faker::Number.between(1, 100))
+  )
+end
+
 10.times do
   Pacote.create(
     valor: Faker::Number.decimal(2),

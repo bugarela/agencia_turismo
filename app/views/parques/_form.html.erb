@@ -1,0 +1,32 @@
+<%= form_with(model: parque, local: true) do |form| %>
+  <% if parque.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(parque.errors.count, "error") %> prohibited this parque from being saved:</h2>
+
+      <ul>
+      <% parque.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_area :descricao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :endereco_id %>
+    <%= form.text_field :endereco_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cidade_id %>
+    <%= form.text_field :cidade_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

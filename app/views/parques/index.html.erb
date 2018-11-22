@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Parques</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descricao</th>
+      <th>Endereco</th>
+      <th>Cidade</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parques.each do |parque| %>
+      <tr>
+        <td><%= parque.descricao %></td>
+        <td><%= parque.endereco %></td>
+        <td><%= parque.cidade %></td>
+        <td><%= link_to 'Show', parque %></td>
+        <td><%= link_to 'Edit', edit_parque_path(parque) %></td>
+        <td><%= link_to 'Destroy', parque, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Parque', new_parque_path %>

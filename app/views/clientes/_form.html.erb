@@ -72,8 +72,8 @@
                     <% checkbox.text[1].each do |atracao| %>
                       <li class="list-group-item"><b><%= atracao.turistico_type %>: </b><%= link_to atracao.descricao, atracao %></li>
                     <% end %>
-                      <li class="list-group-item"><b>Período: </b><%= Pacote.find(checkbox.value).data_inicio %> até <%= Pacote.find(checkbox.value).data_fim %></</li>
-                      <li class="list-group-item"><b>Valor: </b>R$ <%= Pacote.find(checkbox.value).valor %></</li>
+                      <li class="list-group-item"><b>Período: </b><%= Pacote.find(checkbox.value).data_inicio %> até <%= Pacote.find(checkbox.value).data_fim %></li>
+                      <li class="list-group-item"><b>Valor: </b>R$ <%= Pacote.find(checkbox.value).valor %></li>
                     </ul>
                   </div>
                 </div>

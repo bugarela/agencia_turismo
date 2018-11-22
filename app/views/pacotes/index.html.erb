@@ -1,33 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Pacotes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Valor</th>
-      <th>Data inicio</th>
-      <th>Data fim</th>
-      <th>Cidade</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pacotes.each do |pacote| %>
-      <tr>
-        <td><%= pacote.valor %></td>
-        <td><%= pacote.data_inicio %></td>
-        <td><%= pacote.data_fim %></td>
-        <td><%= pacote.cidade.nome %></td>
-        <td><%= link_to 'Show', pacote %></td>
-        <td><%= link_to 'Edit', edit_pacote_path(pacote) %></td>
-        <td><%= link_to 'Destroy', pacote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Pacote', new_pacote_path %>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">Pacotes</h1>
+        <div class="card-columns">
+          <% @pacotes.each do |pacote| %>
+            <div class="card w-100 h-100">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Pacote <%= pacote.id %></h4>
+                <p class="card-category">Cidade: <%= link_to pacote.cidade.nome, pacote.cidade %></p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Período: </b><%= pacote.data_inicio %> até <%= pacote.data_fim %></li>
+                <li class="list-group-item"><b>Valor: </b>R$ <%= pacote.valor %></li>
+                  <% pacote.atracoes.each do |atracao| %>
+                  <li class="list-group-item"><b><%= atracao.turistico_type %>: </b><%= link_to atracao.descricao, atracao %></li>
+                  <% end %>
+                <li class="list-group-item">
+                <%= link_to 'Show', pacote %> | <%= link_to 'Edit', edit_pacote_path(pacote) %> | <%= link_to 'Destroy', pacote, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

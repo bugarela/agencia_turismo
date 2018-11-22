@@ -1,37 +1,92 @@
-<%= form_with(model: pacote, local: true) do |form| %>
-  <% if pacote.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(pacote.errors.count, "error") %> prohibited this pacote from being saved:</h2>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Cadastro Pacote</h4>
+          </div>
+          <div class="card-body">
+            <%= form_with(model: pacote, local: true) do |form| %>
+              <% if pacote.errors.any? %>
+              <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <i class="material-icons">close</i>
+                </button>
+                <span>
+                  <h2><%= pluralize(pacote.errors.count, "error") %> prohibited this pacote from being saved:</h2>
 
-      <ul>
-      <% pacote.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                  <ul>
+                  <% cliente.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+              </div>
+              <% end %>
+
+              <div class="row">
+                <div class="col-md-2 offset-md-1">
+                  <div class="form-group">
+                    <%= form.label :valor %>
+                    <%= form.text_field :valor, :class => "form-control form-control-sm" %>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <%= form.label :data_inicio %>
+                    <div class="form-inline">
+                      <%= form.date_select :data_inicio, {}, {:class => "form-control form-control-sm"} %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <%= form.label :data_fim %>
+                    <div class="form-inline">
+                      <%= form.date_select :data_fim, {}, {:class => "form-control form-control-sm"} %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <%= form.label :cidade_id %>
+                    <%= form.collection_select :cidade_id, Cidade.all, :id, :nome, {}, {:class => "form-control form-control-sm"}%>
+                  </div>
+                </div>
+              </div>
+
+              <h3 class="card-text text-center">Selecione atrações:</h3>
+              <br>
+              <div class="form-check">
+              <div class="row">
+                <%= form.collection_check_boxes(:atracao_ids, Atracao.all, :id, :descricao, {}, { :multiple => true,  :selected => pacote.atracoes.map(&:id), :class => "form-check-input" } ) do |checkbox| %>
+                  <div class="col-md-4">
+                  <%= checkbox.label class:"form-check-label h-100 w-100" do %>
+                  <div class="card w-100 h-100">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title">
+                        <%= checkbox.check_box %>
+                        <span class="form-check-sign">
+                            <span class="check" style="border: 1px solid rgba(0, 0, 0, 0)"></span>
+                        </span>
+                      </h4>
+                      <p class="card-category"><%= link_to checkbox.text, Atracao.find(checkbox.value) %></p>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+              <% end %>
+              </div>
+              <div class="row">
+                <div class="col-md-1">
+                  <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :valor %>
-    <%= form.text_field :valor %>
   </div>
-
-  <div class="field">
-    <%= form.label :data_inicio %>
-    <%= form.date_select :data_inicio %>
-  </div>
-
-  <div class="field">
-    <%= form.label :data_fim %>
-    <%= form.date_select :data_fim %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cidade_id %>
-    <%= form.collection_select :cidade_id, Cidade.all, :id, :nome %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

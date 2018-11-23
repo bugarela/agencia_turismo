@@ -20,4 +20,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'hotel', 'hoteis'
   inflect.irregular 'fundacao', 'fundacoes'
   inflect.irregular 'fundador', 'fundadores'
+  inflect.irregular 'impediu', 'impediram'
 end

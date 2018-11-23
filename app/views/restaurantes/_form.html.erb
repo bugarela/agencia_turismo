@@ -1,7 +1,7 @@
 <%= form_with(model: restaurante, local: true) do |form| %>
   <% if restaurante.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(restaurante.errors.count, "error") %> prohibited this restaurante from being saved:</h2>
+      <h6><%= t('error', count: restaurante.errors.count) %> que esse restaurante fosse salvo:</h6>
 
       <ul>
       <% restaurante.errors.full_messages.each do |message| %>

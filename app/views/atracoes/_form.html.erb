@@ -1,7 +1,7 @@
 <%= form_with(model: atracao, local: true) do |form| %>
   <% if atracao.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(atracao.errors.count, "error") %> prohibited this atracao from being saved:</h2>
+      <h6><%= t('error', count: atracao.errors.count) %> que esse atracao fosse salvo:</h6>
 
       <ul>
       <% atracao.errors.full_messages.each do |message| %>

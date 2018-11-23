@@ -1,7 +1,7 @@
 <%= form_with(model: igreja, local: true) do |form| %>
   <% if igreja.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(igreja.errors.count, "error") %> prohibited this igreja from being saved:</h2>
+      <h6><%= t('error', count: igreja.errors.count) %> que esse igreja fosse salvo:</h6>
 
       <ul>
       <% igreja.errors.full_messages.each do |message| %>

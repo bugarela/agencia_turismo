@@ -1,7 +1,7 @@
 <%= form_with(model: quarto, local: true) do |form| %>
   <% if quarto.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(quarto.errors.count, "error") %> prohibited this quarto from being saved:</h2>
+      <h6><%= t('error', count: quarto.errors.count) %> que esse quarto fosse salvo:</h6>
 
       <ul>
       <% quarto.errors.full_messages.each do |message| %>

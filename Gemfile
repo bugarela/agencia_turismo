@@ -22,6 +22,8 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
+gem 'rails-i18n'
+
 gem 'immigrant'
 gem 'hairtrigger'
 

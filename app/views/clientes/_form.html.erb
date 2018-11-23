@@ -15,7 +15,7 @@
                   <i class="material-icons">close</i>
                 </button>
                 <span>
-                  <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+                  <h6><%= t('error', count: cliente.errors.count) %> que esse cliente fosse salvo:</h6>
 
                   <ul>
                   <% cliente.errors.full_messages.each do |message| %>

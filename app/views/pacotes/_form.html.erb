@@ -14,10 +14,10 @@
                   <i class="material-icons">close</i>
                 </button>
                 <span>
-                  <h2><%= pluralize(pacote.errors.count, "error") %> prohibited this pacote from being saved:</h2>
+                  <h6><%= pluralize(pacote.errors.count, "erro impediu") %> que esse pacote fosse salvo:</h6>
 
                   <ul>
-                  <% cliente.errors.full_messages.each do |message| %>
+                  <% pacote.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
                   <% end %>
               </div>

@@ -31,22 +31,26 @@ end
   )
 end
 
-50.times do
-  Igreja.create(
-    data_construcao: Faker::Date.birthday(100, 500),
-    estilo_construcao: Faker::HitchhikersGuideToTheGalaxy.starship,
-    descricao: Faker::TvShows::Friends.location,
-    endereco: Endereco.find(Faker::Number.between(1, 100)),
-    cidade: Cidade.find(Faker::Number.between(1, 10))
-  )
+for i in 1..10
+  5.times do
+    Igreja.create(
+      data_construcao: Faker::Date.birthday(100, 500),
+      estilo_construcao: Faker::HitchhikersGuideToTheGalaxy.starship,
+      descricao: Faker::TvShows::Friends.location,
+      endereco: Endereco.find(Faker::Number.between(1, 100)),
+      cidade: Cidade.find(i)
+    )
+  end
 end
 
-50.times do
+for i in 1..10
+  5.times do
   Parque.create(
     descricao: Faker::TvShows::Friends.location,
     endereco: Endereco.find(Faker::Number.between(1, 100)),
-    cidade: Cidade.find(Faker::Number.between(1, 10))
+    cidade: Cidade.find(i)
   )
+  end
 end
 
 10.times do
@@ -62,8 +66,16 @@ for i in 1..10
   Faker::Number.between(1, 4).times do
     Atracao.create(
       pacote: Pacote.find(i),
-      turistico_id: Faker::Number.between(1, 50),
+      turistico_id: Pacote.find(i).cidade.igrejas[(Faker::Number.between(0, 4))].id,
       turistico_type: 'Igreja',
+      dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
+    )
+  end
+  Faker::Number.between(1, 4).times do
+    Atracao.create(
+      pacote: Pacote.find(i),
+      turistico_id: Pacote.find(i).cidade.parques[(Faker::Number.between(0, 4))].id,
+      turistico_type: 'Parque',
       dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
     )
   end

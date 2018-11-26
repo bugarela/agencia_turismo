@@ -4,9 +4,7 @@ class Cliente < ApplicationRecord
   accepts_nested_attributes_for :compras, allow_destroy: true
 
   validates :cpf, :nome, :email, :telefone, presence: true
-  validates_associated :compras
-  validates_associated :pacotes
-
+  
   validates :cpf, numericality: { only_integer: true }, length: {is: 11}
   validates :telefone, numericality: { only_integer: true }, length: {minimum: 8}
 end

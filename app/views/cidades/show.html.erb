@@ -26,7 +26,7 @@
                         <td><%= hotel.categoria %></td>
                         <td><%= hotel.endereco.logradouro %>, <%= hotel.endereco.numero %></td>
                         <td><%= hotel.restaurante ? hotel.restaurante.nome : '-' %></td>
-                        <td><%= link_to 'Ver mais', hotel %></td>
+                        <td><%= link_to 'Ver quartos', hotel %></td>
                       </tr>
                     <% end %>
                   </tbody>
@@ -46,7 +46,7 @@
                         <td><%= restaurante.categoria %></td>
                         <td><%= restaurante.endereco.logradouro %>, <%= restaurante.endereco.numero %></td>
                         <td><%= restaurante.hotel.nome %></td>
-                        <td><%= link_to 'Ver mais', restaurante %></td>
+                        <td></td>
                       </tr>
                     <% end %>
                   </tbody>

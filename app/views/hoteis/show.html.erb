@@ -1,24 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nome:</strong>
-  <%= @hotel.nome %>
-</p>
-
-<p>
-  <strong>Categoria:</strong>
-  <%= @hotel.categoria %>
-</p>
-
-<p>
-  <strong>Endereco:</strong>
-  <%= @hotel.endereco %>
-</p>
-
-<p>
-  <strong>Cidade:</strong>
-  <%= @hotel.cidade %>
-</p>
-
-<%= link_to 'Edit', edit_hotel_path(@hotel) %> |
-<%= link_to 'Back', hoteis_path %>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title"><%= @hotel.nome %> - <%= @hotel.categoria %></h4>
+            <p class="card-category"><%= @hotel.endereco.logradouro %>, <%= @hotel.endereco.numero %>
+          </div>
+          <div class="class-body">
+            <h3 class="text-center">Tipos de quartos oferecidos</h3>
+            <div class="card-columns">
+              <% @hotel.tipo_de_quartos.each do |tipo| %>
+                <div class="card w-100 h-100">
+                  <div class="card-header card-header-primary">
+                    <h4 class="card-title"><%= tipo.nome %></h4>
+                    <p class="card-category">Diária: R$ <%= tipo.valor_diaria %>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <b>Quartos: </b>
+                      <%= tipo.quartos.length > 0 ? tipo.quartos.order(:numero).map(&:numero).join(', ') : 'Nenhum quarto disponível' %>
+                    </li>
+                  </ul>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

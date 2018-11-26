@@ -8,12 +8,6 @@ class Pacote < ApplicationRecord
 
   validates :cidade, :valor, :data_inicio, :data_fim, presence: true
 
-  validates_associated :compras
-  validates_associated :clientes
-  validates_associated :atracoes
-  validates_associated :igrejas
-  validates_associated :parques
-
   validates :valor, numericality: true
 
 

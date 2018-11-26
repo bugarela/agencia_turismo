@@ -1,0 +1,42 @@
+<%= form_with(model: fundador, local: true) do |form| %>
+  <% if fundador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fundador.errors.count, "error") %> prohibited this fundador from being saved:</h2>
+
+      <ul>
+      <% fundador.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :data_nasc %>
+    <%= form.date_select :data_nasc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_morte %>
+    <%= form.date_select :data_morte %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nacionalidade %>
+    <%= form.text_field :nacionalidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :atividade %>
+    <%= form.text_field :atividade %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Museu:</strong>
+  <%= @fundacao.museu %>
+</p>
+
+<p>
+  <strong>Fundador:</strong>
+  <%= @fundacao.fundador %>
+</p>
+
+<%= link_to 'Edit', edit_fundacao_path(@fundacao) %> |
+<%= link_to 'Back', fundacoes_path %>

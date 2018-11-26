@@ -11,7 +11,7 @@
                 <p class="card-category">Cidade: <%= link_to pacote.cidade.nome, pacote.cidade %></p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"><b>Período: </b><%= pacote.data_inicio %> até <%= pacote.data_fim %></li>
+                <li class="list-group-item"><b>Período: </b><%= l pacote.data_inicio %> até <%= l pacote.data_fim %></li>
                 <li class="list-group-item"><b>Valor: </b>R$ <%= pacote.valor %></li>
                   <% pacote.atracoes.each do |atracao| %>
                   <li class="list-group-item"><b><%= atracao.tipo %>: </b><%= link_to atracao.descricao, atracao %></li>

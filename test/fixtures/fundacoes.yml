@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  museu: one
+  fundador: one
+
+two:
+  museu: two
+  fundador: two

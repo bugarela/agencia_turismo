@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @museu.descricao %>
+</p>
+
+<p>
+  <strong>Data fundacao:</strong>
+  <%= @museu.data_fundacao %>
+</p>
+
+<p>
+  <strong>N salas:</strong>
+  <%= @museu.n_salas %>
+</p>
+
+<p>
+  <strong>Cidade:</strong>
+  <%= @museu.cidade %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @museu.endereco %>
+</p>
+
+<%= link_to 'Edit', edit_museu_path(@museu) %> |
+<%= link_to 'Back', museus_path %>

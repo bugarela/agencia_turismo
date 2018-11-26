@@ -54,10 +54,22 @@ for i in 1..10
 end
 
 for i in 1..10
-  2.times do
+  5.times do
   CasaDeShow.create(
     hora_inicio: Faker::Number.between(18, 22),
     dia_fechamento: Faker::Number.between(0,6),
+    descricao: Faker::TvShows::Friends.location,
+    endereco: Endereco.find(Faker::Number.between(1, 100)),
+    cidade: Cidade.find(i)
+  )
+  end
+end
+
+for i in 1..10
+  5.times do
+  Museu.create(
+    n_salas: Faker::Number.between(10, 50),
+    data_fundacao: Faker::Date.birthday(100, 500),
     descricao: Faker::TvShows::Friends.location,
     endereco: Endereco.find(Faker::Number.between(1, 100)),
     cidade: Cidade.find(i)
@@ -75,7 +87,7 @@ end
 end
 
 for i in 1..10
-  Faker::Number.between(0, 4).times do
+  Faker::Number.between(0, 2).times do
     Atracao.create(
       pacote: Pacote.find(i),
       turistico_id: Pacote.find(i).cidade.igrejas[(Faker::Number.between(0, 4))].id,
@@ -83,7 +95,7 @@ for i in 1..10
       dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
     )
   end
-  Faker::Number.between(0, 4).times do
+  Faker::Number.between(0, 2).times do
     Atracao.create(
       pacote: Pacote.find(i),
       turistico_id: Pacote.find(i).cidade.parques[(Faker::Number.between(0, 4))].id,
@@ -94,8 +106,16 @@ for i in 1..10
   Faker::Number.between(0, 2).times do
     Atracao.create(
       pacote: Pacote.find(i),
-      turistico_id: CasaDeShow.find(i).cidade.parques[(Faker::Number.between(0, 1))].id,
+      turistico_id: CasaDeShow.find(i).cidade.casa_de_shows[(Faker::Number.between(0, 4))].id,
       turistico_type: 'CasaDeShow',
+      dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
+    )
+  end
+  Faker::Number.between(0, 2).times do
+    Atracao.create(
+      pacote: Pacote.find(i),
+      turistico_id: Museu.find(i).cidade.museus[(Faker::Number.between(0, 4))].id,
+      turistico_type: 'Museu',
       dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
     )
   end
@@ -147,5 +167,22 @@ end
     especialidade: Faker::Food.dish,
     preco_medio: Faker::Number.between(50, 150).to_f + Faker::Number.decimal(1, 2).to_f,
     casa_de_show: CasaDeShow.find(Faker::Number.between(1, 20))
+  )
+end
+
+50.times do
+  Fundador.create(
+    data_nasc: Faker::Date.birthday(60, 180),
+    data_morte: Faker::Date.between(50.years.ago, 50.years.from_now),
+    nome: Faker::Name.name,
+    nacionalidade: Faker::Nation.nationality,
+    atividade: Faker::Job.field
+  )
+end
+
+70.times do
+  Fundacao.create(
+    fundador: Fundador.find(Faker::Number.between(1, 50)),
+    museu: Museu.find(Faker::Number.between(1, 50))
   )
 end

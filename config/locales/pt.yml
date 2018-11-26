@@ -33,3 +33,6 @@ pt:
   error:
     one: 'Um erro impediu'
     other: '%{count} erros impediram'
+  date:
+    formats:
+      default: '%d/%m/%Y'

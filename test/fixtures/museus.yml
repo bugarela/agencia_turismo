@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyText
+  data_fundacao: 2018-11-26
+  n_salas: 1
+  cidade: one
+  endereco: one
+
+two:
+  descricao: MyText
+  data_fundacao: 2018-11-26
+  n_salas: 1
+  cidade: two
+  endereco: two

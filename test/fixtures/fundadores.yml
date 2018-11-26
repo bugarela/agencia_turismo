@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data_nasc: 2018-11-26
+  data_morte: 2018-11-26
+  nome: MyString
+  nacionalidade: MyString
+  atividade: MyString
+
+two:
+  data_nasc: 2018-11-26
+  data_morte: 2018-11-26
+  nome: MyString
+  nacionalidade: MyString
+  atividade: MyString

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data nasc:</strong>
+  <%= @fundador.data_nasc %>
+</p>
+
+<p>
+  <strong>Data morte:</strong>
+  <%= @fundador.data_morte %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @fundador.nome %>
+</p>
+
+<p>
+  <strong>Nacionalidade:</strong>
+  <%= @fundador.nacionalidade %>
+</p>
+
+<p>
+  <strong>Atividade:</strong>
+  <%= @fundador.atividade %>
+</p>
+
+<%= link_to 'Edit', edit_fundador_path(@fundador) %> |
+<%= link_to 'Back', fundadores_path %>

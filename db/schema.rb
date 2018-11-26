@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_26_181322) do
+ActiveRecord::Schema.define(version: 2018_11_26_202823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,25 @@ ActiveRecord::Schema.define(version: 2018_11_26_181322) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "fundacoes", force: :cascade do |t|
+    t.bigint "museu_id"
+    t.bigint "fundador_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fundador_id"], name: "index_fundacoes_on_fundador_id"
+    t.index ["museu_id"], name: "index_fundacoes_on_museu_id"
+  end
+
+  create_table "fundadores", force: :cascade do |t|
+    t.date "data_nasc"
+    t.date "data_morte"
+    t.string "nome"
+    t.string "nacionalidade"
+    t.string "atividade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "hoteis", force: :cascade do |t|
     t.string "nome"
     t.string "categoria"
@@ -94,6 +113,18 @@ ActiveRecord::Schema.define(version: 2018_11_26_181322) do
     t.datetime "updated_at", null: false
     t.index ["cidade_id"], name: "index_igrejas_on_cidade_id"
     t.index ["endereco_id"], name: "index_igrejas_on_endereco_id"
+  end
+
+  create_table "museus", force: :cascade do |t|
+    t.text "descricao"
+    t.date "data_fundacao"
+    t.integer "n_salas"
+    t.bigint "cidade_id"
+    t.bigint "endereco_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cidade_id"], name: "index_museus_on_cidade_id"
+    t.index ["endereco_id"], name: "index_museus_on_endereco_id"
   end
 
   create_table "pacotes", force: :cascade do |t|
@@ -160,10 +191,14 @@ ActiveRecord::Schema.define(version: 2018_11_26_181322) do
   add_foreign_key "casa_de_shows", "enderecos"
   add_foreign_key "compras", "clientes"
   add_foreign_key "compras", "pacotes"
+  add_foreign_key "fundacoes", "fundadores"
+  add_foreign_key "fundacoes", "museus"
   add_foreign_key "hoteis", "cidades"
   add_foreign_key "hoteis", "enderecos"
   add_foreign_key "igrejas", "cidades"
   add_foreign_key "igrejas", "enderecos"
+  add_foreign_key "museus", "cidades"
+  add_foreign_key "museus", "enderecos"
   add_foreign_key "pacotes", "cidades"
   add_foreign_key "parques", "cidades"
   add_foreign_key "parques", "enderecos"

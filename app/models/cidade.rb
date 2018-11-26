@@ -4,6 +4,7 @@ class Cidade < ApplicationRecord
   has_many :igrejas, inverse_of: :cidade
   has_many :parques, inverse_of: :cidade
   has_many :casa_de_shows, inverse_of: :cidade
+  has_many :museus, inverse_of: :cidade
 
   validates :nome, :estado, :populacao, presence: true
   validates_associated :hoteis

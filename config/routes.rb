@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :fundacoes
+  resources :fundadores
+  resources :museus
   resources :restaurante_internos
   resources :casa_de_shows
   resources :parques

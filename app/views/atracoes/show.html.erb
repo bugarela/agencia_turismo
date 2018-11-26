@@ -45,6 +45,25 @@
               </p>
               <% end %>
 
+            <% elsif @atracao.turistico_type == 'Museu' %>
+              <% museu = Museu.find(@atracao.turistico_id)%>
+              <p>
+                <strong>Número de salas:</strong>
+                <%= museu.n_salas %>
+              </p>
+
+              <p>
+                <strong>Data Fundação:</strong>
+                <%= l museu.data_fundacao %>
+              </p>
+
+              <% if museu.fundadores.length > 0 %>
+              <p>
+                <strong>Fundadores:</strong>
+                <%= museu.fundadores.map(&:bio).join('<br>')%>
+              </p>
+              <% end %>
+
             <% end %>
 
           </div>

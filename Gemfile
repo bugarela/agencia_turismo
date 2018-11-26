@@ -27,7 +27,7 @@ gem 'rails-i18n'
 gem 'immigrant'
 gem 'hairtrigger'
 
-gem 'money-rails'
+gem 'rails-erd', group: :development
 
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'

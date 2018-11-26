@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :restaurante_internos
+  resources :casa_de_shows
   resources :parques
   root to: 'clientes#index'
   resources :quartos

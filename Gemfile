@@ -27,6 +27,8 @@ gem 'rails-i18n'
 gem 'immigrant'
 gem 'hairtrigger'
 
+gem 'money-rails'
+
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem "jquery-rails"

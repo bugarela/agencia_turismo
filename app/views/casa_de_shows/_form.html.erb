@@ -1,0 +1,42 @@
+<%= form_with(model: casa_de_show, local: true) do |form| %>
+  <% if casa_de_show.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(casa_de_show.errors.count, "error") %> prohibited this casa_de_show from being saved:</h2>
+
+      <ul>
+      <% casa_de_show.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_area :descricao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hora_inicio %>
+    <%= form.number_field :hora_inicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dia_fechamento %>
+    <%= form.number_field :dia_fechamento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cidade_id %>
+    <%= form.text_field :cidade_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :endereco_id %>
+    <%= form.text_field :endereco_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

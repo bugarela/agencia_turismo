@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_220724) do
+ActiveRecord::Schema.define(version: 2018_11_26_181322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 2018_11_22_220724) do
     t.datetime "updated_at", null: false
     t.index ["pacote_id"], name: "index_atracoes_on_pacote_id"
     t.index ["turistico_id", "turistico_type"], name: "index_atracoes_on_turistico_id_and_turistico_type"
+  end
+
+  create_table "casa_de_shows", force: :cascade do |t|
+    t.text "descricao"
+    t.integer "hora_inicio"
+    t.integer "dia_fechamento"
+    t.bigint "cidade_id"
+    t.bigint "endereco_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cidade_id"], name: "index_casa_de_shows_on_cidade_id"
+    t.index ["endereco_id"], name: "index_casa_de_shows_on_endereco_id"
   end
 
   create_table "cidades", force: :cascade do |t|
@@ -85,7 +97,7 @@ ActiveRecord::Schema.define(version: 2018_11_22_220724) do
   end
 
   create_table "pacotes", force: :cascade do |t|
-    t.money "valor", scale: 2
+    t.decimal "valor"
     t.date "data_inicio"
     t.date "data_fim"
     t.bigint "cidade_id"
@@ -112,6 +124,15 @@ ActiveRecord::Schema.define(version: 2018_11_22_220724) do
     t.index ["tipo_de_quarto_id"], name: "index_quartos_on_tipo_de_quarto_id"
   end
 
+  create_table "restaurante_internos", force: :cascade do |t|
+    t.decimal "preco_medio"
+    t.string "especialidade"
+    t.bigint "casa_de_show_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["casa_de_show_id"], name: "index_restaurante_internos_on_casa_de_show_id"
+  end
+
   create_table "restaurantes", force: :cascade do |t|
     t.string "nome"
     t.string "categoria"
@@ -127,7 +148,7 @@ ActiveRecord::Schema.define(version: 2018_11_22_220724) do
 
   create_table "tipo_de_quartos", force: :cascade do |t|
     t.string "nome"
-    t.money "valor_diaria", scale: 2
+    t.decimal "valor_diaria"
     t.bigint "hotel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -135,6 +156,8 @@ ActiveRecord::Schema.define(version: 2018_11_22_220724) do
   end
 
   add_foreign_key "atracoes", "pacotes"
+  add_foreign_key "casa_de_shows", "cidades"
+  add_foreign_key "casa_de_shows", "enderecos"
   add_foreign_key "compras", "clientes"
   add_foreign_key "compras", "pacotes"
   add_foreign_key "hoteis", "cidades"
@@ -145,6 +168,7 @@ ActiveRecord::Schema.define(version: 2018_11_22_220724) do
   add_foreign_key "parques", "cidades"
   add_foreign_key "parques", "enderecos"
   add_foreign_key "quartos", "tipo_de_quartos"
+  add_foreign_key "restaurante_internos", "casa_de_shows"
   add_foreign_key "restaurantes", "cidades"
   add_foreign_key "restaurantes", "enderecos"
   add_foreign_key "restaurantes", "hoteis"

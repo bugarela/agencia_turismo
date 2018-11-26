@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @casa_de_show.descricao %>
+</p>
+
+<p>
+  <strong>Hora inicio:</strong>
+  <%= @casa_de_show.hora_inicio %>
+</p>
+
+<p>
+  <strong>Dia fechamento:</strong>
+  <%= @casa_de_show.dia_fechamento %>
+</p>
+
+<p>
+  <strong>Cidade:</strong>
+  <%= @casa_de_show.cidade %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @casa_de_show.endereco %>
+</p>
+
+<%= link_to 'Edit', edit_casa_de_show_path(@casa_de_show) %> |
+<%= link_to 'Back', casa_de_shows_path %>

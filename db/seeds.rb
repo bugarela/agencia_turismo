@@ -53,9 +53,21 @@ for i in 1..10
   end
 end
 
+for i in 1..10
+  2.times do
+  CasaDeShow.create(
+    hora_inicio: Faker::Number.between(18, 22),
+    dia_fechamento: Faker::Number.between(0,6),
+    descricao: Faker::TvShows::Friends.location,
+    endereco: Endereco.find(Faker::Number.between(1, 100)),
+    cidade: Cidade.find(i)
+  )
+  end
+end
+
 10.times do
   Pacote.create(
-    valor: Faker::Number.decimal(2),
+    valor: Faker::Number.decimal(4, 2),
     data_inicio: Faker::Date.between(Date.today, 5.days.from_now),
     data_fim: Faker::Date.between(25.days.from_now, 30.days.from_now),
     cidade: Cidade.find(Faker::Number.between(1, 10))
@@ -63,7 +75,7 @@ end
 end
 
 for i in 1..10
-  Faker::Number.between(1, 4).times do
+  Faker::Number.between(0, 4).times do
     Atracao.create(
       pacote: Pacote.find(i),
       turistico_id: Pacote.find(i).cidade.igrejas[(Faker::Number.between(0, 4))].id,
@@ -71,11 +83,19 @@ for i in 1..10
       dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
     )
   end
-  Faker::Number.between(1, 4).times do
+  Faker::Number.between(0, 4).times do
     Atracao.create(
       pacote: Pacote.find(i),
       turistico_id: Pacote.find(i).cidade.parques[(Faker::Number.between(0, 4))].id,
       turistico_type: 'Parque',
+      dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
+    )
+  end
+  Faker::Number.between(0, 2).times do
+    Atracao.create(
+      pacote: Pacote.find(i),
+      turistico_id: CasaDeShow.find(i).cidade.parques[(Faker::Number.between(0, 1))].id,
+      turistico_type: 'CasaDeShow',
       dia_visita: Faker::Date.between(10.days.from_now, 20.days.from_now)
     )
   end
@@ -97,7 +117,7 @@ end
   )
 end
 
-500.times do
+50.times do
   Restaurante.create(
     nome: Faker::Food.dish,
     categoria: Faker::Subscription.plan,
@@ -119,5 +139,13 @@ end
   Quarto.create(
     numero: Faker::Number.between(1, 9).to_s + "0" + Faker::Number.between(1, 9).to_s,
     tipo_de_quarto: TipoDeQuarto.find(Faker::Number.between(1, 200))
+  )
+end
+
+15.times do
+  RestauranteInterno.create(
+    especialidade: Faker::Food.dish,
+    preco_medio: Faker::Number.between(50, 150).to_f + Faker::Number.decimal(1, 2).to_f,
+    casa_de_show: CasaDeShow.find(Faker::Number.between(1, 20))
   )
 end

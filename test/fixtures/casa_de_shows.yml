@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyText
+  hora_inicio: 1
+  dia_fechamento: 1
+  cidade: one
+  endereco: one
+
+two:
+  descricao: MyText
+  hora_inicio: 1
+  dia_fechamento: 1
+  cidade: two
+  endereco: two

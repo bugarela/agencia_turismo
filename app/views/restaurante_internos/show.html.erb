@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Preco medio:</strong>
+  <%= @restaurante_interno.preco_medio %>
+</p>
+
+<p>
+  <strong>Especialidade:</strong>
+  <%= @restaurante_interno.especialidade %>
+</p>
+
+<p>
+  <strong>Casa de show:</strong>
+  <%= @restaurante_interno.casa_de_show %>
+</p>
+
+<%= link_to 'Edit', edit_restaurante_interno_path(@restaurante_interno) %> |
+<%= link_to 'Back', restaurante_internos_path %>

@@ -15,15 +15,35 @@
 
             <% if @atracao.turistico_type == 'Igreja' %>
 
-            <p>
-              <strong>Estilo Construção:</strong>
-              <%= Igreja.find(@atracao.turistico_id).estilo_construcao %>
-            </p>
+              <p>
+                <strong>Estilo Construção:</strong>
+                <%= Igreja.find(@atracao.turistico_id).estilo_construcao %>
+              </p>
 
-            <p>
-              <strong>Data Construção:</strong>
-              <%= Igreja.find(@atracao.turistico_id).data_construcao %>
-            </p>
+              <p>
+                <strong>Data Construção:</strong>
+                <%= Igreja.find(@atracao.turistico_id).data_construcao %>
+              </p>
+
+            <% elsif @atracao.turistico_type == 'CasaDeShow' %>
+              <% casa_de_show = CasaDeShow.find(@atracao.turistico_id)%>
+              <p>
+                <strong>Horário de início:</strong>
+                <%= casa_de_show.hora_inicio %>:00
+              </p>
+
+              <p>
+                <strong>Fecha:</strong>
+                <%= casa_de_show.fechamento %>
+              </p>
+
+              <% if casa_de_show.restaurante_interno %>
+              <p>
+                <strong>Restaurante Interno:</strong>
+                <%= casa_de_show.restaurante_interno.especialidade %>
+                (Preço médio de R$<%= casa_de_show.restaurante_interno.preco_medio %>)
+              </p>
+              <% end %>
 
             <% end %>
 
